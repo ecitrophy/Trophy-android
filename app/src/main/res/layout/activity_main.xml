@@ -52,6 +52,7 @@
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        android:onClick="lobby"
         android:text="@string/login_button"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"

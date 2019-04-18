@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Trophy</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Log In</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="trophy_logo">Trophy Logo</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="username_hint">Username</string>
+    <string name="name_hint">Name</string>
+</resources>

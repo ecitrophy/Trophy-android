@@ -19,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 
@@ -31,14 +33,14 @@ public class LobbyActivity extends AppCompatActivity
         setContentView(R.layout.activity_lobby);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -46,6 +48,7 @@ public class LobbyActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        displaySelectedScreen(R.id.nav_lobby);
     }
 
     @Override
@@ -80,30 +83,42 @@ public class LobbyActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
+    private void displaySelectedScreen(int id) {
+        Fragment fragment = null;
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+            //fragment = new
         } else if (id == R.id.nav_lobby) {
-
+            fragment = new LobbyFragment();
         } else if (id == R.id.nav_history) {
-
+            fragment = new HistoryFragment();
         } else if (id == R.id.nav_redeem) {
-
+            fragment = new RedeemFragment();
         } else if (id == R.id.nav_buy) {
-
+            fragment = new BuyFragment();
         } else if (id == R.id.nav_logout) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         }
 
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        displaySelectedScreen(id);
+
         return true;
     }
 }

@@ -8,6 +8,11 @@
     tools:context=".LobbyActivity"
     tools:showIn="@layout/app_bar_lobby">
 
-    <include layout="@layout/cards_lobby"/>
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <!--<include layout="@layout/cards_lobby"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

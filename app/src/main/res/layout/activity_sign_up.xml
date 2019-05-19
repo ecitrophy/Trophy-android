@@ -26,6 +26,9 @@
         android:ems="10"
         android:hint="@string/username_hint"
         android:inputType="textPersonName"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="5dp"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/editText5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +43,9 @@
         android:ems="10"
         android:hint="@string/name_hint"
         android:inputType="textPersonName"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="5dp"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/editText6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,40 +60,49 @@
         android:ems="10"
         android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawablePadding="5dp"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
+        app:layout_constraintBottom_toTopOf="@+id/signupPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/signupPassword"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/editText8"
+        android:backgroundTint="@color/colorPrimary"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/signupCPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText6" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/signupCPassword"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/confirm_password_hint"
         android:inputType="textPassword"
-        app:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/signupPassword" />
 
     <Button
         android:id="@+id/button3"
@@ -100,5 +115,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/signupCPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

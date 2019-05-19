@@ -1,5 +1,6 @@
 package com.edu.eci.ieti.trophy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -28,7 +32,29 @@ public class LobbyFragment extends Fragment {
         fillBets();
         AdapterCards adapter = new AdapterCards(bets);
         recycler.setAdapter(adapter);
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNewActivity();
+            }
+        });
+//        FloatingActionButton fab = view.findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View viewc) {
+//                Intent intent = new Intent(LobbyActivity.class, CreateMatch.class);
+//                startActivity(intent);
+////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
+//            }
+//        });
         return view;
+    }
+
+    private void startNewActivity() {
+        Intent intent = new Intent(getActivity(), CreateMatch.class);
+        startActivity(intent);
     }
 
     private void fillBets() {

@@ -37,8 +37,10 @@ public class LobbyActivity extends AppCompatActivity
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+//                Intent intent = new Intent(LobbyActivity.this, CreateMatch.class);
+//                startActivity(intent);
+////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
 //            }
 //        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -86,7 +88,7 @@ public class LobbyActivity extends AppCompatActivity
     private void displaySelectedScreen(int id) {
         Fragment fragment = null;
         if (id == R.id.nav_profile) {
-            //fragment = new
+            fragment = new ProfileFragment();
         } else if (id == R.id.nav_lobby) {
             fragment = new LobbyFragment();
         } else if (id == R.id.nav_history) {

@@ -33,4 +33,9 @@
     <string name="game_name">League of Legends</string>
     <string name="amount_bettors">No. Bettors:</string>
     <string name="bet">Bet:</string>
+    
+    <string-array name="nameGames">
+        <item>League of Legends</item>
+        <item>Clash Royale</item>
+    </string-array>
 </resources>

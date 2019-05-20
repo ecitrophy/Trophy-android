@@ -13,9 +13,18 @@ import java.util.ArrayList;
 
 public class AdapterCards extends RecyclerView.Adapter<AdapterCards.ViewHolderCards> {
 
-    ArrayList<betCards> bets;
+    ArrayList<BetCards> bets;
+    private onItemClickListener mListener;
 
-    public AdapterCards(ArrayList<betCards> bets) {
+    public interface onItemClickListener {
+        void onItemClicked(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        mListener = listener;
+    }
+
+    public AdapterCards(ArrayList<BetCards> bets) {
         this.bets = bets;
     }
 
@@ -23,15 +32,15 @@ public class AdapterCards extends RecyclerView.Adapter<AdapterCards.ViewHolderCa
     @Override
     public ViewHolderCards onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cards_lobby, null, false);
-        return new ViewHolderCards(view);
+        return new ViewHolderCards(view, mListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderCards holder, int position) {
-        holder.nameBet.setText(bets.get(position).getNameBet());
-        holder.nameGame.setText(bets.get(position).getNameGame());
+        holder.nameBet.setText(bets.get(position).getName());
+        holder.nameGame.setText(bets.get(position).getGame());
         holder.amountBettors.setText(bets.get(position).getAmountBettors());
-        holder.bet.setText(bets.get(position).getBet());
+        holder.bet.setText(bets.get(position).getMinimumBet());
         holder.image.setImageResource(bets.get(position).getImage());
     }
 
@@ -45,13 +54,25 @@ public class AdapterCards extends RecyclerView.Adapter<AdapterCards.ViewHolderCa
         TextView nameBet, nameGame, amountBettors, bet;
         ImageView image;
 
-        public ViewHolderCards(@NonNull View itemView) {
+        public ViewHolderCards(@NonNull View itemView, final onItemClickListener listener) {
             super(itemView);
-            nameBet = (TextView) itemView.findViewById(R.id.nameBetCard);
-            nameGame = (TextView) itemView.findViewById(R.id.nameGameCard);
+            nameBet = (TextView) itemView.findViewById(R.id.nickname_bettor);
+            nameGame = (TextView) itemView.findViewById(R.id.minimum_bet);
             amountBettors = (TextView) itemView.findViewById(R.id.amountBettorsCard);
             bet = (TextView) itemView.findViewById(R.id.amountCard);
             image = (ImageView) itemView.findViewById(R.id.imageCard);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClicked(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

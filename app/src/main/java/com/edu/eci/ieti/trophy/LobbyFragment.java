@@ -99,10 +99,14 @@ public class LobbyFragment extends Fragment {
                 }
                 JsonParser jsonParser = new JsonParser();
                 JsonArray jsonArray = jsonParser.parse(response).getAsJsonArray();
+                System.out.println("size: " + jsonArray.size());
                 for (int i = 0; i < jsonArray.size(); i++) {
                     JsonObject match = ((JsonObject) jsonParser.parse(jsonArray.get(i).toString()));
                     String bettors = String.valueOf(match.get("bettors").getAsJsonArray().size());
-                    bets.add(new BetCards(match.get("name").getAsString(), match.get("game").getAsString(), bettors, match.get("minimumBet").getAsString(), R.drawable.league_of_legends_1024x576));
+                    System.out.println("if: " + match.get("state").getAsString().equals("OPEN") + match.get("state").getAsString());
+                    if ((match.get("state").getAsString().equals("OPEN")) || (match.get("state").getAsString().equals("INGAME"))) {
+                        bets.add(new BetCards(match.get("name").getAsString(), match.get("game").getAsString(), bettors, match.get("minimumBet").getAsString(), R.drawable.league_of_legends_1024x576));
+                    }
                 }
             }
         });

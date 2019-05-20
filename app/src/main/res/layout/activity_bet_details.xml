@@ -59,7 +59,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="4dp"
-                android:text="Bet: 1000"
+                android:text="Minimum Bet: 1000"
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toEndOf="@+id/imageCard"
                 app:layout_constraintTop_toBottomOf="@+id/nickname_bettor" />
@@ -75,6 +75,29 @@
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toEndOf="@+id/imageCard"
                 app:layout_constraintTop_toBottomOf="@+id/minimum_bet" />
+
+            <TextView
+                android:id="@+id/bet_player"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="4dp"
+                android:text="faker"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/imageCard"
+                app:layout_constraintTop_toBottomOf="@+id/id_match" />
+
+            <TextView
+                android:id="@+id/bet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:text="Bet: 500"
+                android:textColor="#0C0606"
+                app:layout_constraintBaseline_toBaselineOf="@+id/minimum_bet"
+                app:layout_constraintStart_toEndOf="@+id/minimum_bet" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

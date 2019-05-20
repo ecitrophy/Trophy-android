@@ -3,7 +3,6 @@ package com.edu.eci.ieti.trophy;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +29,7 @@ public class AdapterBettors extends RecyclerView.Adapter<AdapterBettors.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolderBettors holder, int position) {
         holder.name.setText(bettors.get(position).getName());
-        holder.description.setText(bettors.get(position).getInfo());
+        holder.description.setText(bettors.get(position).getBet());
         holder.image.setImageResource(bettors.get(position).getImage());
     }
 
@@ -47,7 +46,7 @@ public class AdapterBettors extends RecyclerView.Adapter<AdapterBettors.ViewHold
         public ViewHolderBettors(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.idNombre);
-            description = (TextView) itemView.findViewById(R.id.idInfo);
+            description = (TextView) itemView.findViewById(R.id.bet_bettor);
             image = (ImageView) itemView.findViewById(R.id.idImagen);
         }
     }

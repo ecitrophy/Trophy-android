@@ -64,7 +64,12 @@ public class BetDetails extends AppCompatActivity {
                 for (int i = 0; i < active_bettors.size(); i++) {
 //                    JsonObject match = ((JsonObject) jsonParser.parse(active_bettors.get(i).toString()));
                     JsonObject bettor = (JsonObject) jsonParser.parse(active_bettors.get(i).toString());
-                    bettors.add(new Bettor(bettor.get("name").getAsString(), bettor.get("email").getAsString(), R.drawable.profile_image));
+                    JsonObject bets = (JsonObject) bettor.get("bets");
+                    JsonObject defaultJ = (JsonObject) bets.get("default");
+                    System.out.println("default1: " + bettor.get("userName").getAsString());
+                    System.out.println("default2: " + defaultJ.get("bet").getAsString());
+                    System.out.println("default3: " + defaultJ.get("player").getAsString());
+                    bettors.add(new Bettor(bettor.get("userName").getAsString(), defaultJ.get("bet").getAsString(), defaultJ.get("player").getAsString(), R.drawable.profile_image));
                 }
                 TextView title = findViewById(R.id.bet_name_title);
                 title.setText(match.get("name").getAsString());
@@ -72,11 +77,19 @@ public class BetDetails extends AppCompatActivity {
                 title.setText(match.get("game").getAsString());
                 JsonObject creator = (JsonObject) match.get("creator");
                 title = findViewById(R.id.nickname_bettor);
-                title.setText(creator.get("name").getAsString());
+                title.setText(creator.get("userName").getAsString());
                 title = findViewById(R.id.minimum_bet);
                 title.setText("Minimum Bet: " + match.get("minimumBet").getAsString());
                 title = findViewById(R.id.id_match);
                 title.setText(match.get("id").getAsString());
+                JsonObject bets = (JsonObject) creator.get("bets");
+                JsonObject defaultJ = (JsonObject) bets.get("default");
+                title = findViewById(R.id.bet_player);
+                title.setText(defaultJ.get("player").getAsString());
+                title = findViewById(R.id.bet);
+                title.setText("Bet:" + defaultJ.get("bet").getAsString());
+
+
             }
         });
         executorService.awaitTermination(1, TimeUnit.SECONDS);
